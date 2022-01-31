@@ -1,0 +1,32 @@
+starting to code the financial indicators processing
+Things to remember for the MACD
+    When the MACD shows a value greater than 0, it means that the market is upward trending, and when it is less than 0, downward trending. Often, this is used in conjunction with a nine day EMA of the MACD called the ‘signal’ to better help indicate upward/downward trends and ideal exit times (18).
+    Equation for MACD and EMA
+        EMA(t,N) = ClosePrice(t)2N+1+EMA(t-1)(1-2N+1)
+        MACD(t) = EMA(t, 12) - EMA(t, 26)
+Things to remember for A/D Line
+    If the A/D line is seen to be rising/falling with the price it is a confirmation of a trend in its respective direction, where steeper gradients indicate stronger affirmations, while conflicting directions of the price and A/D line are signs of potential reversals in trends (19)
+    equation for AD Line
+        MFM(t) = (ClosePrice(t)-DayLow(t))-(DayHigh(t)-ClosePrice(t))DayHigh(t)-DayLow(t)
+        MFV(t) = MFM(t)TradeVolume(t)
+        A/D(t) = A/D(t-1)+MFV(t)
+Things to remember for ATR
+    stock's volatility is large, so is it’s ATR, meaning it has the potential to bounce back even with a sudden price drop. The reverse is also true with a low ATR suggesting the movement of the stock will continue with its current trend. The ATR is usually calculated over a 14 day period using the following equations, where t is the current day (20).
+    ATR Equations
+        TR(t) = Max[(DayHigh-DayLow), Abs(DayHigh-ClosePrice), Abs(DayLow-ClosePrice)]
+        ATR(t) =114i=013TR(t-i)
+
+
+Goal of this semester before finals is have everything but the model finished. ie word embedding, cleaning and fin processing done.
+    Currently cleaning is done, fin in progress, embedding tbd.
+    Fin straight foward cleaning too both done soon
+    Embedding I think lets do a dual approach?
+        we do the tf idf, dont assign words value before hand
+        as well as the model that uses the market finance data Wilshire 5000 to assign values to tf idk word vectors?
+            How would i do this..... each day get a vector and train it w/ simple wilshire open close then that feeds into
+            NN that then feeds into other NN??
+            Its a little un needed like if we just had a large enough NN model and just fed it the wilshire data, essentially
+            same thing
+            Also for the wilshire data we feed do we want to do finance indicators on that too or just HiLoCl
+
+Need to run the news cleaning for all the data at some point, finished coding the save to csv file

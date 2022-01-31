@@ -1,16 +1,18 @@
 import modelController
 import validationController
-import inputController
+import newscleaner
 
 if __name__ == '__main__':
+    '''
     #Begin program code, get the desired mode from the user
     print ('Select mode: ')
     print ('tr - train \nte - test(not supported yet)')
-    mode = input('mode: ')
-    if mode != 'tr' or mode != 'te':
+    #mode = input('mode: ')
+    mode = 'tr'
+    print ('you have selected', mode)
+    if mode != 'tr' and mode != 'te':
         print('not a valid mode exiting code')
         exit(1)
-    print ('you have selected', mode)
     if mode == 'tr':
         #declare what files we are training on
         #TO DO at some point: Build functionality so that we can choose which file we want to train on, implement as mode to save start time when in default
@@ -22,11 +24,27 @@ if __name__ == '__main__':
               '\nDate,Open,High,Low,Close,Volume,Adj Close - in that order'
               '\nthe top row of the sheet should be the labels of each column')
         #first call to input controller to transform our csv file into object data ref flow diagram
-        news_train, news_test = inputController.clean_news('news.csv')
-        fin_train, fin_test = inputController.clean_fin('fin.csv')
+        news = inputController.clean_news('data/news.csv')
+        #fin = inputController.clean_fin('/data/fin.csv')
+        # Split into test train data
+        #news_train, news_test =
+        #fin_train, fin_test =
         #train the model with train data
-        model = modelController.train(news_train, fin_train)
+        #model = modelController.train(news_train, fin_train)
         #evaluate the model with test data
-        validationController.evaluate(model, news_test, fin_test)
+        #validationController.evaluate(model, news_test, fin_test)
+        '''
+    while (True):
+        print ('What would you like to do select one:')
+        print ('Clean News - cn')
+        print ('Exit - exit')
 
+        #mode = input('decision: ').lower()
+        mode = 'cn'
+        if mode == 'exit':
+            print('Exiting code now')
+            exit(0)
+        if mode == 'cn':
+            #clean the news and save it into a file
+            newscleaner.clean_news('data/news.csv')
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

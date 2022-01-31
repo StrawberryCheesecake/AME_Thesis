@@ -1,0 +1,36 @@
+For input controller current step implementation
+1. open new files that is a csv
+2. get each line and tokenize them
+3. remove punctuation and stop words
+4. lemmanize the words to get the lemmas
+5. next stem the words to further reduce the vocabulary
+6. TODO now save a file of processed headlines to include the date
+    The grouping of the dates and headlines will be at the word embedding level so we have a large word vector to process
+    try to run this before meeting
+ Currently trying to save file have to decide if I want to store it as a 2d array of set size or jagged array
+ If stored as jagged its simpler potentially? the dimensions arent super set but what do we fill in the empty spots anyways?
+ would have to make it nxn where n is the size of the largest word vector only advantage i see is that it keeps it consitent
+ always the size of largest word vector that will also be fed to NN decide later
+
+word embedding
+How are we word embedding? what is the process were using
+My current thought process is to get the list of words and their respective dates from a text file
+Additionally we can build multiple of these files/functions and switch them out to see how they each perform
+however with each new embedding format is a new model
+    ex. start with TFIDF then move on try something else? maybe figure out some way to use fin data to proces.. not sure tho
+    MAYBE use fin data that isnt the fin data were using, we can try and predict individual stock and use the Wilshire 5000 to train?
+        Or some other stock thats a good representation of the market movement
+        however yea if we do 2 forms of embedding and 4 models we now have to train double the models
+
+Financial Data processing
+TODO Start building this
+1. open fin file - Dija to start with following that other stocks, next meeting ask about crypto potentially? newer tho need to find proper amtch with news data
+    Create functions to process the 3 decided upon financial indicators
+    save a file that has each days corresponding values like original but also now has the includer financial indicators
+    Will have to potentially remove some points to account for the indicators? If they work off a 14 day average or something
+        will have to delete the first 14 days
+
+
+Black box/modularity each section will take a specific file and output a file that plug and play into the other
+This would allow easy future development and the switching in and out of files
+The main input will be a menu so you can pick which step
